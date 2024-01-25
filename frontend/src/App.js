@@ -6,20 +6,19 @@ import LoginPage from './components/LoginPage';
 import Signup from './components/Signup';
 import { useState } from 'react';
 import Profile from './components/Profile';
-import CreateProLog from './components/ProfileComponents/CreateProLog';
 
 function App() {
-  const [token, setToken] = useState("");
-  console.log(localStorage);
+  // const [token, setToken] = useState("");
+  // console.log(localStorage);
   return (
     <div className="App">
       {/* <NavBar /> */}
       <Router>
         <Routes>
           <Route path='/' element={<><NavBar/> <LandingPage /></>} />
-          <Route path='/login' element={<LoginPage setToken={setToken}/>} />
-          <Route path='/signup' element={<Signup setToken={setToken}/>}/>
-          <Route path='/profile/*' element={<Profile token={token} />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/signup' element={<Signup />}/>
+          <Route path='/profile/' element={<Profile />} />
         </Routes>
       </Router>
     </div>

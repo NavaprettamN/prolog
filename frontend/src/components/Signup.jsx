@@ -2,11 +2,10 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import './Signup.css'
 import { useNavigate } from 'react-router-dom';
-const Signup = ({setToken}) => {
+const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  console.log(username, password);
   const handleSubmit = async () => {
     try {
       const res = await axios.post("http://localhost:4000/signup", {
@@ -15,7 +14,6 @@ const Signup = ({setToken}) => {
       });
       if(res.status == 201) {
         const token = res.data.token;
-        setToken(token);
         navigate("/profile"); 
       }
       

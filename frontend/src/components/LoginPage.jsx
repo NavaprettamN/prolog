@@ -4,7 +4,7 @@ import "./LoginPage.css"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const LoginPage = ({setToken, setUserId}) => {
+const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,8 +19,8 @@ const LoginPage = ({setToken, setUserId}) => {
         const token = res.data.token;
         const userId = res.data.userId;
         console.log(res);
-        setToken(token);
         localStorage.setItem('userId', userId);
+        localStorage.setItem('token', token);
         navigate("/profile");
       }
     } catch (error) {
@@ -34,9 +34,9 @@ const LoginPage = ({setToken, setUserId}) => {
                 Login
             </div>
             <div className='form'>
-                <label for="username">Username : </label>
+                <label htmlFor="username">Username : </label>
                 <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} required/>
-                <label for="password">Password : </label>
+                <label htmlFor="password">Password : </label>
                 <input type='text' id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 <button onClick={handleSubmit}>Login In</button>
             </div>
