@@ -18,7 +18,7 @@ const LoginPage = () => {
       if(res.status == 200) {
         const token = res.data.token;
         const userId = res.data.userId;
-        console.log(res);
+        // console.log(res);
         localStorage.setItem('userId', userId);
         localStorage.setItem('token', token);
         navigate("/profile");

@@ -50,11 +50,12 @@ const login = async(req,res,next) => {
     }
 };
 
-const verifyToken = async (req, res, next) => {
+const verifyToken = (req, res, next) => {
     try {
-        const cookies = await req.headers['cookie'];
-        
-        const token = cookies.split('=')[1];
+        console.log(typeof(req.headers.cookie));
+        console.log(req.headers.cookie);
+        const cookieString = req.headers.cookie;
+        const token = cookieString.split('=')[1];
         // const headers = req.headers['authorization'];
         // const token = headers.split(" ")[1];
         if(!token) {

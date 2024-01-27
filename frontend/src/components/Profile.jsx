@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+axios.defaults.withCredentials = true;
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -10,9 +10,10 @@ const Profile = () => {
 
     const getUserData = async() => {
       try {
-        const res = await axios.get('http://localhost:4000/user');
-        console(res);
-        setUsername(res.data.id);
+        const res = await axios.get('http://localhost:4000/user', {
+          withCredentials: true,
+        });
+        setUsername(res.data.username);
       }
       catch (error) {
         console.log(error, "this is the error");
@@ -47,7 +48,7 @@ const Profile = () => {
   }
   return (
     <>
-      <div>{userId}{username}</div>
+      <div>{username}</div>
       <div>
         {/* <NavBarP /> */}
         <button onClick={signout}>sign out</button>
